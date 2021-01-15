@@ -24,7 +24,7 @@ RIGHT = 2
 UP = 3
 
 
-class frozenLake:
+class frozenLakeExtended:
 
     def __init__(self, type):
         """
@@ -64,6 +64,13 @@ class frozenLake:
     def reset(self):
         """ resets state of the environment """
         self._current_state = self._initial_state
+        self.player = []
+        for line in MAPS[self.type]:
+            for cell in line:
+                if cell == 'S':
+                    self.player.append(1)
+                else:
+                    self.player.append(0)
         return [self.holes, self.player, self.goal]
 
     def get_all_states(self):
